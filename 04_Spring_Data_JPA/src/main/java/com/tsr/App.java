@@ -1,5 +1,7 @@
 package com.tsr;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -13,7 +15,20 @@ public class App
     {
     	ApplicationContext context = new AnnotationConfigApplicationContext(RootConfig.class);
     	ProductService service = context.getBean(ProductService.class);
-    	ProductBo product = service.getProductById(15);
-    	System.out.println(product);
+    	//ProductBo product = service.getProductById(15);
+    	//System.out.println(product);
+    	
+//    	List<ProductBo> productBos = service.getProductsBy("price");
+//    	productBos.forEach(System.out::println);
+    	
+//    	List<ProductBo> productBos = service.getProductByPagination(0, 5);
+//    	productBos.forEach(System.out::println);
+    	
+    	//List<ProductBo> productBos = service.findProductByName("Ipad-12.9");
+    	//productBos.forEach(System.out::println);
+    	
+    	List<ProductBo> productBos = service.findProductsBetweenRange(1000, 25000);
+    	productBos.forEach(System.out::println);
+    	
     }
 }
