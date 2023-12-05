@@ -69,8 +69,8 @@ public class ProductService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<ProductBo> findProductsBetweenRange(double price1,double price2) {
-		List<Product> listOfProducts = productsRepository.findByPriceBetween(price1,price2);
+	public List<ProductBo> findProductsBetweenRange(double price1, double price2) {
+		List<Product> listOfProducts = productsRepository.findByPriceBetween(price1, price2);
 		List<ProductBo> productBos = null;
 		productBos = listOfProducts.stream().map(product -> {
 			ProductBo bo = new ProductBo();
@@ -78,5 +78,29 @@ public class ProductService {
 			return bo;
 		}).collect(Collectors.toList());
 		return productBos;
+	}
+
+	@Transactional(readOnly = true)
+	public ProductBo findById(int id) {
+		Product product = productsRepository.findByid(id);
+		ProductBo bo = new ProductBo();
+		BeanUtils.copyProperties(product, bo);
+		return bo;
+	}
+
+	@Transactional(readOnly = true)
+	public List<ProductBo> findByNameLike(String name) {
+		List<Product> products = productsRepository.findByNameLike(name);
+		List<ProductBo> productBos = products.stream().map(product -> {
+			ProductBo bo = new ProductBo();
+			BeanUtils.copyProperties(product, bo);
+			return bo;
+		}).collect(Collectors.toList());
+		return productBos;
+	}
+
+	@Transactional(readOnly = false)
+	public int updateProductNameById(String name, int id) {
+		return productsRepository.updateProductNameById(name, id);
 	}
 }
