@@ -16,7 +16,7 @@ public class DeliveryAssociateService {
 	private DeliveryAssociateRepository associateRepository;
 
 	@Transactional(readOnly = true)
-	public List<DeliveryAssociate> getDeliveryByWeight(int weight) {
-		return associateRepository.getDeliveryByWeight(weight);
+	public List<DeliveryAssociate> getDeliveryAssociateByAge(int age) {
+		return associateRepository.getDeliveryAssociateByAge(age);
 	}
 }
