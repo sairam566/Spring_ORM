@@ -8,7 +8,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.tsr.bo.ProductBo;
 import com.tsr.config.RootConfig;
 import com.tsr.entities.DeliveryAssociate;
+import com.tsr.entities.Parcel;
 import com.tsr.service.DeliveryAssociateService;
+import com.tsr.service.ParcelService;
 import com.tsr.service.ProductService;
 
 public class App {
@@ -16,6 +18,7 @@ public class App {
 		ApplicationContext context = new AnnotationConfigApplicationContext(RootConfig.class);
 		ProductService service = context.getBean(ProductService.class);
 		DeliveryAssociateService deliveryService = context.getBean(DeliveryAssociateService.class);
+		ParcelService parcelService = context.getBean(ParcelService.class);
 		
 		 //ProductBo product = service.getProductById(16);
 		 //System.out.println(product);
@@ -40,7 +43,10 @@ public class App {
 //		int value = service.updateProductNameById("Iphone-15",16);
 //		System.out.println(value);
 		
-		List<DeliveryAssociate> deliveryByWeight = deliveryService.getDeliveryByWeight(5);
-		deliveryByWeight.forEach(System.out::println);
+//		List<DeliveryAssociate> deliveryByWeight = deliveryService.getDeliveryAssociateByAge(5);
+//		deliveryByWeight.forEach(System.out::println);
+		
+		List<Parcel> parcelByDeliveryAssociate = parcelService.getAllParcelDeliveredByAssociate("BHA");
+		parcelByDeliveryAssociate.forEach(System.out::println);
 	}
 }
