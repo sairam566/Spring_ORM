@@ -10,5 +10,6 @@ import com.tsr.entities.DeliveryAssociate;
 public interface DeliveryAssociateRepository extends JpaRepository<DeliveryAssociate, Integer> {
 
 	@Query(value = "from DeliveryAssociate del where experience >= ?1")
-	public List<DeliveryAssociate> getDeliveryByWeight(int weight);
+	public List<DeliveryAssociate> getDeliveryAssociateByAge(int age);
+	
 }
