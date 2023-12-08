@@ -103,4 +103,9 @@ public class ProductService {
 	public int updateProductNameById(String name, int id) {
 		return productsRepository.updateProductNameById(name, id);
 	}
+	
+	@Transactional(readOnly = true)
+	public <T> List<T> getProductLike(String name,Class<T> entity){
+		return productsRepository.findByNameLike(name,entity);
+	}
 }
