@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tsr.entities.DeliveryAssociate;
 import com.tsr.entities.DeliveryAssociateContactView;
+import com.tsr.entities.DeliveryAssociateDetails;
 import com.tsr.repositorys.DeliveryAssociateRepository;
 
 @Service
@@ -24,5 +25,10 @@ public class DeliveryAssociateService {
 	@Transactional(readOnly = true)
 	public List<DeliveryAssociateContactView> findByExp(int exp){
 		return associateRepository.findByExperienceEquals(exp);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<DeliveryAssociateDetails> getDliveryAssociateDetails(int id){
+		return associateRepository.findByDeliveryAssociateNo(id);
 	}
 }

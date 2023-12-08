@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.tsr.entities.DeliveryAssociate;
 import com.tsr.entities.DeliveryAssociateContactView;
+import com.tsr.entities.DeliveryAssociateDetails;
 
 public interface DeliveryAssociateRepository extends JpaRepository<DeliveryAssociate, Integer> {
 
@@ -15,4 +16,8 @@ public interface DeliveryAssociateRepository extends JpaRepository<DeliveryAssoc
 	
 	//Closed Projection
 	public List<DeliveryAssociateContactView> findByExperienceEquals(int exp);
+	
+	//Class Based Projection
+	@Query("select new com.tsr.entities.DeliveryAssociateDetails(del.deliveryAssociateNo,del.associateName,del.experience) from DeliveryAssociate del where del.deliveryAssociateNo = ?1")
+	public List<DeliveryAssociateDetails> findByDeliveryAssociateNo(int id);
 }
