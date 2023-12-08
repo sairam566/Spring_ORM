@@ -11,4 +11,7 @@ public interface ParcelRepository extends JpaRepository<Parcel, Integer>{
 	
 	@Query(value="from Parcel p where p.deliveryAssociate.associateName = ?1")
 	public List<Parcel> getAllParcelDeliveredByAssociate(String name);
+	
+	//Open Projection
+	public List<ParcelView> findByParcelNo(int id);
 }
