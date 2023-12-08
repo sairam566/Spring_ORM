@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tsr.entities.DeliveryAssociate;
+import com.tsr.entities.DeliveryAssociateContactView;
 import com.tsr.repositorys.DeliveryAssociateRepository;
 
 @Service
@@ -18,5 +19,10 @@ public class DeliveryAssociateService {
 	@Transactional(readOnly = true)
 	public List<DeliveryAssociate> getDeliveryAssociateByAge(int age) {
 		return associateRepository.getDeliveryAssociateByAge(age);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<DeliveryAssociateContactView> findByExp(int exp){
+		return associateRepository.findByExperienceEquals(exp);
 	}
 }
