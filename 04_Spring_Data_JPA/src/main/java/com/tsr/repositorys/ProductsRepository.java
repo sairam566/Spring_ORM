@@ -23,4 +23,7 @@ public interface ProductsRepository extends JpaRepository<Product, Integer> {
 	@Modifying
 	@Query(value="update Product p set p.name = :name where p.id = :id")
 	public int updateProductNameById(@Param("name") String name, @Param("id") int id);
+	
+	//Dynamic Projections
+	<T> List<T> findByNameLike(String name,Class<T> type);
 }
