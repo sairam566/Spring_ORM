@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tsr.entities.Parcel;
 import com.tsr.repositorys.ParcelRepository;
+import com.tsr.repositorys.ParcelView;
 
 @Service
 public class ParcelService {
@@ -18,6 +19,11 @@ public class ParcelService {
 	@Transactional(readOnly = true)
 	public List<Parcel> getAllParcelDeliveredByAssociate(String name) {
 		return parcelRepository.getAllParcelDeliveredByAssociate(name);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<ParcelView> findByParcelNo(int id){
+		return parcelRepository.findByParcelNo(id);
 	}
 
 }
