@@ -8,7 +8,9 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.tsr.bo.ProductBo;
 import com.tsr.config.RootConfig;
 import com.tsr.entities.DeliveryAssociate;
+import com.tsr.entities.DeliveryAssociateContactView;
 import com.tsr.entities.Parcel;
+import com.tsr.repositorys.ParcelView;
 import com.tsr.service.DeliveryAssociateService;
 import com.tsr.service.ParcelService;
 import com.tsr.service.ProductService;
@@ -46,7 +48,19 @@ public class App {
 //		List<DeliveryAssociate> deliveryByWeight = deliveryService.getDeliveryAssociateByAge(5);
 //		deliveryByWeight.forEach(System.out::println);
 		
-		List<Parcel> parcelByDeliveryAssociate = parcelService.getAllParcelDeliveredByAssociate("BHA");
-		parcelByDeliveryAssociate.forEach(System.out::println);
+//		List<Parcel> parcelByDeliveryAssociate = parcelService.getAllParcelDeliveredByAssociate("BHA");
+//		parcelByDeliveryAssociate.forEach(System.out::println);
+		
+//		List<DeliveryAssociateContactView> deliveryAssociateExp = deliveryService.findByExp(6);
+//		deliveryAssociateExp.stream().forEach(asso->{
+//			System.out.print(asso.getAssociateName()+", ");
+//			System.out.print(asso.getContactNo()+", ");
+//			System.out.println(asso.getExperience());
+//		});
+		
+		List<ParcelView> parcelsDesc = parcelService.findByParcelNo(3);
+		parcelsDesc.stream().forEach(parcelDesc->{
+			System.out.println(parcelDesc.getProductDescription());
+		});
 	}
 }
