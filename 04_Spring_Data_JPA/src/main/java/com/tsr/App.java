@@ -5,13 +5,9 @@ import java.util.List;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.tsr.bo.ProductBo;
 import com.tsr.config.RootConfig;
-import com.tsr.entities.DeliveryAssociate;
-import com.tsr.entities.DeliveryAssociateContactView;
-import com.tsr.entities.DeliveryAssociateDetails;
-import com.tsr.entities.Parcel;
-import com.tsr.repositorys.ParcelView;
+import com.tsr.entities.Product;
+import com.tsr.entities.ProductView;
 import com.tsr.service.DeliveryAssociateService;
 import com.tsr.service.ParcelService;
 import com.tsr.service.ProductService;
@@ -64,7 +60,12 @@ public class App {
 //			System.out.println(parcelDesc.getProductDescription());
 //		});
 		
-		List<DeliveryAssociateDetails> associateDetails = deliveryService.getDliveryAssociateDetails(2);
-		associateDetails.stream().forEach(System.out::println);
+//		List<DeliveryAssociateDetails> associateDetails = deliveryService.getDliveryAssociateDetails(2);
+//		associateDetails.stream().forEach(System.out::println);
+		
+		List<ProductView> productViews = service.getProductLike("%I%",ProductView.class);
+		productViews.stream().forEach(pro->{
+			System.out.println(pro.getName());
+		});
 	}
 }
