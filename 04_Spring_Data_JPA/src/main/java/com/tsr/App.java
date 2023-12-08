@@ -9,6 +9,7 @@ import com.tsr.bo.ProductBo;
 import com.tsr.config.RootConfig;
 import com.tsr.entities.DeliveryAssociate;
 import com.tsr.entities.DeliveryAssociateContactView;
+import com.tsr.entities.DeliveryAssociateDetails;
 import com.tsr.entities.Parcel;
 import com.tsr.repositorys.ParcelView;
 import com.tsr.service.DeliveryAssociateService;
@@ -58,9 +59,12 @@ public class App {
 //			System.out.println(asso.getExperience());
 //		});
 		
-		List<ParcelView> parcelsDesc = parcelService.findByParcelNo(3);
-		parcelsDesc.stream().forEach(parcelDesc->{
-			System.out.println(parcelDesc.getProductDescription());
-		});
+//		List<ParcelView> parcelsDesc = parcelService.findByParcelNo(3);
+//		parcelsDesc.stream().forEach(parcelDesc->{
+//			System.out.println(parcelDesc.getProductDescription());
+//		});
+		
+		List<DeliveryAssociateDetails> associateDetails = deliveryService.getDliveryAssociateDetails(2);
+		associateDetails.stream().forEach(System.out::println);
 	}
 }
